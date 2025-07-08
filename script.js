@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const userName = localStorage.getItem("userName");
-  const userEmail = localStorage.getItem("userEmail");
+  const userName = sessionStorage.getItem("userName");
+  const userEmail = sessionStorage.getItem("userEmail");
 
   if (!userName || !userEmail) {
     alert("Please sign up or sign in before booking.");
@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoutBtn = document.getElementById("logoutBtn");
   if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
-      localStorage.removeItem("userName");
-      localStorage.removeItem("userEmail");
+      sessionStorage.removeItem("userName");
+      sessionStorage.removeItem("userEmail");
       sessionStorage.removeItem("welcomeShown");
       alert("You have been logged out.");
       window.location.href = "signin.html";
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".book-now").forEach(btn => {
     btn.addEventListener("click", () => {
-      const userEmail = localStorage.getItem("userEmail");
+      const userEmail = sessionStorage.getItem("userEmail");
       if (!userEmail) {
         alert("Please sign in before booking.");
         window.location.href = "signin.html";
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
     bookingForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const userEmail = localStorage.getItem("userEmail");
+      const userEmail = sessionStorage.getItem("userEmail");
       if (!userEmail) {
         alert("You must sign in to make a booking.");
         window.location.href = "signin.html";
@@ -197,9 +197,10 @@ document.addEventListener("DOMContentLoaded", () => {
     sessionStorage.setItem("welcomeShown", "true");
   }
 
-  if (userEmail) {
+  const sessionEmail = sessionStorage.getItem("userEmail");
+  if (sessionEmail) {
     setTimeout(() => {
-      fetch(`https://easycar-backend-production.up.railway.app/api/bookings/${userEmail}`)
+      fetch(`https://easycar-backend-production.up.railway.app/api/bookings/${sessionEmail}`)
         .then(res => res.json())
         .then(data => {
           const statusDiv = document.getElementById("statusDetails");
@@ -219,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <p><strong>Additional Details:</strong> ${latest.details || "None"}</p>
             `;
           } else {
-            statusDiv.innerHTML = `<p>No bookings found for ${userEmail}. Make your first booking now!</p>`;
+            statusDiv.innerHTML = `<p>No bookings found for ${sessionEmail}. Make your first booking now!</p>`;
           }
         })
         .catch(err => {
