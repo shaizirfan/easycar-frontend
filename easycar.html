@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EasyCar - Welcome</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+   <header class="navbar">
+  <div class="logo">EasyCar</div>
+  
+  <i class="fas fa-bars hamburger" id="hamburger"></i> <!-- Hamburger Icon -->
+
+  <nav>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#fleet">Cars</a></li>
+      <li><a href="#booking">Booking</a></li>
+      <li><a href="#status">Status</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="signin.html" class="auth-link" id="signInLink">Sign In</a></li>
+      <li><a href="signup.html" class="auth-link" id="signUpLink">Sign Up</a></li>
+      <li><a href="#" id="logoutLink" style="display: none;">Logout</a></li>
+      <button id="logoutBtn" > Log Out</button>
+    </ul>
+  </nav>
+</header>
+
+
+    <section id="home" class="intro-section">
+      <video autoplay muted loop class="background-video">
+        <source src="image/carvideo.mp4" type="video/mp4" />
+        Your browser does not support HTML5 video.
+      </video>
+      <div class="overlay"></div>
+      <div class="intro-text">
+        <h1 id="animated-title">Welcome to EasyCar</h1>
+        <p>
+          Fast, reliable and affordable car rentals at your fingertips EasyCar
+          is your trusted partner for seamless car rental experiences. We offer
+          a wide range of vehicles – from economy to luxury, EVs to supercars.
+          Our platform ensures transparent pricing, instant booking, and
+          top-notch customer service Whether it's a short city ride or a weekend
+          getaway, we've got you covered Drive freedom. Drive EasyCar.
+        </p>
+        <div class="intro-buttons">
+          <button class="browse" id="browseBtn">Browse Cars</button>
+          <button class="learn">Learn More</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- car-listings.html -->
+    <section id="fleet" class="car-listings">
+      <h2>Browse Our Fleet</h2>
+      <div class="car-category-buttons">
+        <button class="category-btn" onclick="filterCars('all')">All</button>
+        <button class="category-btn" onclick="filterCars('normal')">
+          Normal
+        </button>
+        <button class="category-btn" onclick="filterCars('suv')">SUV</button>
+        <button class="category-btn" onclick="filterCars('ev')">
+          Electric
+        </button>
+        <button class="category-btn" onclick="filterCars('supercar')">
+          Supercar
+        </button>
+      </div>
+
+      <div class="car-grid">
+        <!-- Normal Cars -->
+        <div class="car-card normal">
+          <img src="image/car1.png" alt="Toyota Corolla" />
+          <h3>Toyota Corolla</h3>
+          <p>Brand: Toyota</p>
+          <p>₹3000/day</p>
+          <button class="book-now">Book Now</button>
+        </div>
+        <div class="car-card normal">
+          <img src="image/car2.png" alt="Hyundai i20" />
+          <h3>Hyundai i20</h3>
+          <p>Brand: Hyundai</p>
+          <p>₹2500/day</p>
+          <button class="book-now">Book Now</button>
+        </div>
+        <div class="car-card normal">
+          <img src="image/car3.png" alt="Honda City" />
+          <h3>Honda City</h3>
+          <p>Brand: Honda</p>
+          <p>₹3200/day</p>
+          <button class="book-now">Book Now</button>
+        </div>
+        <div class="car-card normal">
+          <img src="image/car4.png" alt="Tata Nexon" />
+          <h3>Tata Nexon</h3>
+          <p>Brand: Tata</p>
+          <p>₹2800/day</p>
+          <button class="book-now">Book Now</button>
+        </div>
+        <div class="car-card normal">
+          <img src="image/car5.png" alt="Maruti Baleno" />
+          <h3>Maruti Baleno</h3>
+          <p>Brand: Maruti</p>
+          <p>₹2400/day</p>
+          <button class="book-now">Book Now</button>
+        </div>
+
+        <!-- SUVs -->
+        <div class="car-card suv">
+          <img src="image/car6.png" alt="Mahindra XUV700" />
+          <h3>Mahindra XUV700</h3>
+          <p>Brand: Mahindra</p>
+          <p>₹4000/day</p>
+          <button class="book-now">Book Now</button>
+        </div>
+        <div class="car-card suv">
+          <img src="image/car7.png" alt="Toyota Fortuner" />
+          <h3>Toyota Fortuner</h3>
+          <p>Brand: Toyota</p>
+          <p>₹5000/day</p>
+          <button class="book-now">Book Now</button>
+        </div>
+        <div class="car-card suv">
+          <img src="image/car8.png" alt="BMW X5" />
+          <h3>BMW X5</h3>
+          <p>Brand: BMW</p>
+          <p>₹7200/day</p>
+          <button class="book-now">Book Now</button>
+        </div>
+
+        <!-- Electric Cars -->
+        <div class="car-card ev">
+          <img src="image/car9.png" alt="Tesla Model 3" />
+          <h3>Tesla Model 3</h3>
+          <p>Brand: Tesla</p>
+          <p>₹5800/day</p>
+          <button class="book-now">Book Now</button>
+        </div>
+        <div class="car-card ev">
+          <img src="image/car10.png" alt="Kia EV6" />
+          <h3>Kia EV6</h3>
+          <p>Brand: Kia</p>
+          <p>₹5100/day</p>
+          <button class="book-now">Book Now</button>
+        </div>
+        <div class="car-card ev">
+          <img src="image/car11.png" alt="MG ZS EV" />
+          <h3>MG ZS EV</h3>
+          <p>Brand: MG</p>
+          <p>₹4700/day</p>
+          <button class="book-now">Book Now</button>
+        </div>
+
+        <!-- Supercars -->
+        <div class="car-card supercar">
+          <img src="image/car12.png" alt="Lamborghini Huracan" />
+          <h3>Lamborghini Huracan</h3>
+          <p>Brand: Lamborghini</p>
+          <p>₹15000/day</p>
+          <button class="book-now">Book Now</button>
+        </div>
+        <div class="car-card supercar">
+          <img src="image/car13.png" alt="Ferrari 488" />
+          <h3>Ferrari 488</h3>
+          <p>Brand: Ferrari</p>
+          <p>₹16000/day</p>
+          <button class="book-now">Book Now</button>
+        </div>
+        <div class="car-card supercar">
+          <img src="image/car14.png" alt="Porsche 911" />
+          <h3>Porsche 911</h3>
+          <p>Brand: Porsche</p>
+          <p>₹14500/day</p>
+          <button class="book-now">Book Now</button>
+        </div>
+      </div>
+    </section>
+    <!-- Booking Section -->
+<section id="booking" class="booking-section">
+  <h2>Book Your Car</h2>
+  <form id="bookingForm">
+    <div class="form-group">
+      <label for="selectedCar">Selected Car:</label>
+      <input type="text" id="selectedCar" name="selectedCar" readonly>
+    </div>
+    <div class="form-group">
+      <label for="pickupLocation">Pickup Location:</label>
+      <input type="text" id="pickupLocation" name="pickupLocation" required>
+    </div>
+    <div class="form-group">
+      <label for="dropLocation">Drop-off Location:</label>
+      <input type="text" id="dropLocation" name="dropLocation" required>
+    </div>
+    <div class="form-group">
+      <label for="pickupTime">Pickup Date & Time:</label>
+      <input type="datetime-local" id="pickupTime" name="pickupTime" required>
+    </div>
+    <div class="form-group">
+      <label for="dropTime">Drop-off Date & Time:</label>
+      <input type="datetime-local" id="dropTime" name="dropTime" required>
+    </div>
+    <div class="form-group">
+      <label for="details">Additional Details:</label>
+      <textarea id="details" name="details" rows="4" placeholder="Contact Number,Name"></textarea>
+    </div>
+    <button type="submit" class="confirm-booking-btn">Confirm Booking</button>
+  </form>
+</section>
+<!-- Booking Status Section -->
+<section id="status" class="booking-status-section">
+  <h2>Booking Status</h2>
+  <div id="statusDetails" class="status-card">
+    <!-- Booking details will appear here dynamically -->
+  </div>
+</section>
+<section id="contact" class="contact-section">
+  <form id="contactForm" action="https://formspree.io/f/mldnzkzk" method="POST" autocomplete="off">
+
+  <div class="contact-container">
+
+    <!-- Left: Transparent Contact Form -->
+    <div class="contact-form">
+      <h2>Get In Touch</h2>
+      <form action="https://formspree.io/f/mldnzkzk" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="text" name="subject" placeholder="Subject" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+    <!-- Right: Contact Info -->
+    <div class="contact-info">
+      <h2>Contact Information</h2>
+      <p><strong>Name:</strong> Shaiz Irfan</p>
+      <p><strong>Phone:</strong> 9555625862</p>
+      <p><strong>Email:</strong> shaizirfan0786@gmail.com</p>
+      <p><strong>Location:</strong> Lucknow, Uttar Pradesh</p>
+
+      <h3>Connect With Me</h3>
+      <div class="social-icons">
+        <a href="https://wa.me/9555625862" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/shaiz_20_?utm_source=qr&igsh=cmdoOW9nYnNrZHE3" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+  </body>
+</html>
