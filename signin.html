@@ -1,169 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sign In</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #03045e, #0077b6, #00b4d8);
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-    }
-
-    .form-container {
-      background-color: rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(12px);
-      padding: 40px 32px;
-      border-radius: 16px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-      width: 100%;
-      max-width: 400px;
-      animation: fadeIn 0.5s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from {
-        transform: translateY(20px);
-        opacity: 0;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
-      to {
-        transform: translateY(0);
-        opacity: 1;
+
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(135deg, #03045e, #0077b6, #00b4d8);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
       }
-    }
 
-    h2 {
-      text-align: center;
-      color: #90e0ef;
-      margin-bottom: 30px;
-      font-size: 1.8rem;
-      font-weight: 600;
-    }
-
-    .input-group {
-      position: relative;
-      margin-bottom: 20px;
-    }
-
-    input {
-      width: 100%;
-      padding: 14px 16px;
-      border: none;
-      border-radius: 10px;
-      font-size: 1rem;
-      background-color: rgba(255, 255, 255, 0.15);
-      color: #fff;
-      transition: background 0.3s;
-    }
-
-    input::placeholder {
-      color: #d9d9d9;
-    }
-
-    input:focus {
-      outline: none;
-      background-color: rgba(255, 255, 255, 0.25);
-    }
-
-    .eye-icon {
-      position: absolute;
-      top: 50%;
-      right: 14px;
-      transform: translateY(-50%);
-      cursor: pointer;
-      font-size: 1.2rem;
-      color: #caf0f8;
-      user-select: none;
-    }
-
-    button {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 30px;
-      background: linear-gradient(to right, #00b4d8, #0077b6);
-      color: white;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      background: #90e0ef;
-      color: #03045e;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    @media screen and (max-width: 500px) {
       .form-container {
-        padding: 30px 20px;
+        background-color: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(12px);
+        padding: 40px 32px;
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        width: 100%;
+        max-width: 400px;
+        animation: fadeIn 0.5s ease-in-out;
       }
-    }
-  </style>
-</head>
-<body>
 
-  <form id="signinForm" class="form-container">
-    <h2>Sign In</h2>
-    <div class="input-group">
-      <input type="email" id="email" placeholder="Email" required />
-    </div>
-    <div class="input-group">
-      <input type="password" id="password" placeholder="Password" required />
-      <span class="eye-icon" id="togglePassword">👁️</span>
-    </div>
-    <button type="submit">Sign In</button>
-  </form>
+      @keyframes fadeIn {
+        from {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
 
-  <script>
-    // 🔁 Toggle Password Visibility
-    const passwordInput = document.getElementById("password");
-    const togglePassword = document.getElementById("togglePassword");
+      h2 {
+        text-align: center;
+        color: #90e0ef;
+        margin-bottom: 30px;
+        font-size: 1.8rem;
+        font-weight: 600;
+      }
 
-    togglePassword.addEventListener("click", () => {
-      const type = passwordInput.type === "password" ? "text" : "password";
-      passwordInput.type = type;
-      togglePassword.textContent = type === "password" ? "👁️" : "🙈";
-    });
+      .input-group {
+        position: relative;
+        margin-bottom: 20px;
+      }
 
-    // 🔐 Sign In Submit
-    document.getElementById("signinForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const email = document.getElementById("email").value;
-      const password = passwordInput.value;
+      input {
+        width: 100%;
+        padding: 14px 16px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        background-color: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        transition: background 0.3s;
+      }
 
-       const res = await fetch("https://easycar-backend-production.up.railway.app/api/auth/signin", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password })
+      input::placeholder {
+        color: #d9d9d9;
+      }
+
+      input:focus {
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.25);
+      }
+
+      .eye-icon {
+        position: absolute;
+        top: 50%;
+        right: 14px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: 1.2rem;
+        color: #caf0f8;
+        user-select: none;
+      }
+
+      button {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 30px;
+        background: linear-gradient(to right, #00b4d8, #0077b6);
+        color: white;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      button:hover {
+        background: #90e0ef;
+        color: #03045e;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      @media screen and (max-width: 500px) {
+        .form-container {
+          padding: 30px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <form id="signinForm" class="form-container">
+      <h2>Sign In</h2>
+      <div class="input-group">
+        <input type="email" id="email" placeholder="Email" required />
+      </div>
+      <div class="input-group">
+        <input type="password" id="password" placeholder="Password" required />
+        <span class="eye-icon" id="togglePassword">👁️</span>
+      </div>
+      <button type="submit">Sign In</button>
+    </form>
+
+    <script>
+      // 🔁 Toggle Password Visibility
+      const passwordInput = document.getElementById("password");
+      const togglePassword = document.getElementById("togglePassword");
+
+      togglePassword.addEventListener("click", () => {
+        const type = passwordInput.type === "password" ? "text" : "password";
+        passwordInput.type = type;
+        togglePassword.textContent = type === "password" ? "👁️" : "🙈";
       });
 
-      const data = await res.json();
+      // 🔐 Sign In Submit
+      document
+        .getElementById("signinForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const email = document.getElementById("email").value;
+          const password = passwordInput.value;
 
-      if (res.ok && data.user) {
-        localStorage.setItem("userEmail", data.user.email);
-        localStorage.setItem("userName", data.user.name);
-        sessionStorage.removeItem("welcomeShown");
-        alert(`${data.user.name} has signed in`);
-        window.location.href = "easycar.html";
-      } else {
-        alert(data.message || "Sign in failed. Try again.");
-      }
-    });
-  </script>
+          const res = await fetch(
+            "https://easycar-backend-production.up.railway.app/api/auth/signin",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email, password }),
+            }
+          );
 
-</body>
+          const data = await res.json();
+
+          if (res.ok && data.user) {
+            sessionStorage.setItem("userEmail", email);
+            sessionStorage.setItem("userName", data.user.name); // ✅ fix
+            sessionStorage.removeItem("welcomeShown");
+            alert(`${data.user.name} has signed in`);
+            window.location.href = "easycar.html";
+          } else {
+            alert(data.message || "Sign in failed. Try again.");
+          }
+        });
+    </script>
+  </body>
 </html>
