@@ -6,16 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     alert("Please sign up or sign in before booking.");
   }
 
-  const logoutBtn = document.getElementById("logoutBtn");
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", () => {
-      sessionStorage.removeItem("userName");
-      sessionStorage.removeItem("userEmail");
-      sessionStorage.removeItem("welcomeShown");
-      alert("You have been logged out.");
-      window.location.href = "signin.html";
-    });
-  }
+ 
 
   document.getElementById("browseBtn")?.addEventListener("click", () => {
     document.getElementById("fleet")?.scrollIntoView({ behavior: "smooth" });
